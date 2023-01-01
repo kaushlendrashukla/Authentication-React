@@ -1,10 +1,12 @@
 import { useRef, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import AuthContext from '../../Store/authContext';
 import classes from './ProfileForm.module.css';
 
 const ProfileForm = () => {
   const newPasswordInputref = useRef()
  const  authCtx = useContext(AuthContext)
+ const history = useHistory()
   const submitHandler = event => {
     event.preventDefault()
 const enteredNewPassword = newPasswordInputref.current.value
@@ -23,7 +25,7 @@ fetch("https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyBWSS3
   }
 }).then (res => {
 
-
+history.replace('/')
 
 })
   }
